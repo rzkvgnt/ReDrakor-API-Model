@@ -1,15 +1,23 @@
 from flask import Flask, request
 import joblib
+import numpy as np
 
 app = Flask(__name__)
 
-model = joblib.load('model-recommendation-dramas.joblib')
+#@app.route("/")
+#def home():
+#    return "Hello, Flask!"
 
-@app.route("/get-simmilar-recommendation", methods=['POST'])
-def get_similar_recommendation():
+models = joblib.load('model1.joblib')
+
+@app.route("/get-simmilar-reccomendation", methods=['POST'])
+def print_similar_drama():
     # title
-    content = request.json
-    prediction = model.predict(content['title'])
+    title = request.form.get('judul')
+    if not title:
+        return "No title provided"
+
+    prediction = models.predict([title])
 
     # TODO: get sinopsis and year in this function, using dataframe
     return prediction
