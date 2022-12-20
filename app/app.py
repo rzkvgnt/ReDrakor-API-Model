@@ -6,7 +6,7 @@ import streamlit as st
 import requests
 import urllib.parse
 
-models = joblib.load('redrakor.joblib')
+# models = joblib.load('redrakor.joblib')
 df = pd.read_csv('../data/input/tb_redrakor.csv', index_col=None)
 
 def get_index_from_name(judul):
