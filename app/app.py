@@ -7,7 +7,7 @@ import requests
 import urllib.parse
 
 # models = joblib.load('redrakor.joblib')
-df = pd.read_csv('../data/input/tb_redrakor.csv', index_col=None)
+df = pd.read_csv('tb_redrakor.csv', index_col=None)
 
 def get_index_from_name(judul):
   search_result = df[df['judul']==judul].index.tolist()
